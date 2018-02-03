@@ -20,7 +20,7 @@
   <tile id="4">
    <animation>
     <frame tileid="4" duration="3000"/>
-    <frame tileid="5" duration="100"/>
+    <frame tileid="5" duration="300"/>
    </animation>
   </tile>
  </tileset>
