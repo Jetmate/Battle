@@ -81,6 +81,6 @@ class TiledLevel extends TiledMap {
     // // }
 
     public function collideWithLevel(obj:FlxObject, ?notifyCallback:FlxObject->FlxObject->Void, ?processCallback:FlxObject->FlxObject->Bool):Bool {
-        return FlxG.overlap(collidableTiles, obj, notifyCallback, processCallback);
+        return FlxG.overlap(collidableTiles, obj, notifyCallback, processCallback != null ? processCallback : FlxObject.separate);
     }
 }

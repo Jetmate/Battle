@@ -13,9 +13,9 @@ class PlayState extends FlxState {
 	{
 		super.create();
 
-		var tiledMap = new TiledLevel(AssetPaths.level1__tmx);
-		add(tiledMap.backgroundTiles);
-		add(tiledMap.collidableTiles);
+		map = new TiledLevel(AssetPaths.level1__tmx);
+		add(map.backgroundTiles);
+		add(map.collidableTiles);
 
 		player = new Player(0, 0);
 		add(player);
@@ -25,7 +25,7 @@ class PlayState extends FlxState {
 		FlxG.camera.bgColor = FlxColor.fromRGB(250, 250, 250);
 
 		var spawns = new Array<FlxPoint>();
-		for (object in tiledMap.objectLayers[0].objects) {
+		for (object in map.objectLayers[0].objects) {
 			switch object.type {
 				case 'spawn': {
 					spawns.push(new FlxPoint(object.x, object.y));
@@ -39,5 +39,7 @@ class PlayState extends FlxState {
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
+
+		map.collideWithLevel(player);
 	}
 }
