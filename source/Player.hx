@@ -23,18 +23,25 @@ class Player extends flixel.FlxSprite {
       new FlxPoint(8, 15)
     );
     setFrames(spritesheet);
-    animation.add('walk', [0, 1], 3);
+    animation.add('walk', [0, 1], 5);
     animation.add('idle', [2, 3], 2);
     animation.play('idle');
+
+    width -= 2;
+    centerOffsets();
   }
 
   public override function update(elapsed:Float) {
     if (FlxG.keys.anyPressed(rightKeys)) {
       velocity.x = walkSpeed;
-      animation.play('walk');
+      if (animation.name != 'walk') {
+        animation.play('walk', false, false, -1);
+      }
     } else if (FlxG.keys.anyPressed(leftKeys)) {
       velocity.x = -walkSpeed;
-      animation.play('walk');
+      if (animation.name != 'walk') {
+        animation.play('walk', false, false, -1);
+      }
     } else {
       velocity.x = 0;
       animation.play('idle');
