@@ -15,6 +15,7 @@
   <tile id="2">
    <properties>
     <property name="collide" type="bool" value="true"/>
+    <property name="sloped" value="nw"/>
    </properties>
   </tile>
   <tile id="4">
@@ -22,6 +23,12 @@
     <frame tileid="4" duration="3000"/>
     <frame tileid="5" duration="300"/>
    </animation>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="collide" type="bool" value="true"/>
+    <property name="sloped" value="ne"/>
+   </properties>
   </tile>
  </tileset>
  <layer name="foreground" width="16" height="16">
@@ -59,8 +66,8 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,3,1,1,1,1,1,2147483651,0,0,0,0,
-0,0,0,0,3,1,1,1,1,1,1,1,2147483651,0,0,0,
+0,0,0,0,0,3,1,1,1,1,1,28,0,0,0,0,
+0,0,0,0,3,1,1,1,1,1,1,1,28,0,0,0,
 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 </data>
  </layer>
