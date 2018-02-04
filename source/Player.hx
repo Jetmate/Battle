@@ -1,5 +1,7 @@
 package;
 
+import flixel.graphics.frames.FlxFramesCollection;
+import flixel.math.FlxRect;
 import flixel.FlxObject;
 import flixel.graphics.frames.FlxTileFrames;
 import flixel.math.FlxPoint;
@@ -18,11 +20,15 @@ class Player extends flixel.FlxSprite {
 
   public function new(X:Float, Y:Float) {
     super(X, Y);
-    var spritesheet = FlxTileFrames.fromGraphic(
-      FlxGraphic.fromAssetKey(AssetPaths.player__png),
-      new FlxPoint(8, 15)
+    var spritesheet = new FlxFramesCollection(
+      FlxGraphic.fromAssetKey(AssetPaths.player__png)
     );
+    spritesheet.addSpriteSheetFrame(new FlxRect(0, 0, 8, 15));
+    spritesheet.addSpriteSheetFrame(new FlxRect(8, 0, 8, 15));
+    spritesheet.addSpriteSheetFrame(new FlxRect(0, 15, 8, 15));
+    spritesheet.addSpriteSheetFrame(new FlxRect(8, 15, 8, 15));
     setFrames(spritesheet);
+
     animation.add('walk', [0, 1], 5);
     animation.add('idle', [2, 3], 2);
     animation.play('idle');

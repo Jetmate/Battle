@@ -106,12 +106,11 @@ class TiledLevel extends TiledMap {
                         //         rotation = -90
                         //     }
                         // }
-                        trace(clearedTile);
                         var specialTile = new FlxTileSpecial(
                             clearedTile,
                             flippedX(tile),
                             flippedY(tile),
-                            flippedXY(tile) ? 90 : 0
+                            flippedXY(tile) ? FlxTileSpecial.ROTATE_90 : 0
                         );
                         if (animation != null && animation.length != 0) {
                             specialTile.animation = processAnimation(animation, Std.string(clearedTile), true);
@@ -132,6 +131,7 @@ class TiledLevel extends TiledMap {
                     FlxTilemapAutoTiling.OFF,
                     tileSet.firstGID
                 );
+                tilemap.useScaleHack = true;
                 tilemap.setSpecialTiles(specialTiles);
 
                 var slopes = [
@@ -146,7 +146,15 @@ class TiledLevel extends TiledMap {
                     var properties = tileSet.getPropertiesByGid(i);
                     if (properties != null) {
                         if (properties.contains("collide")) {
-                            tilemap.setTileProperties(i);
+                            var flag:Int;
+                            switch properties.get("collide") {
+                                case "down": flag = FlxObject.DOWN;
+                                case "up": flag = FlxObject.UP;
+                                case "left": flag = FlxObject.LEFT;
+                                case "right": flag = FlxObject.RIGHT;
+                                default: flag = FlxObject.ANY;
+                            }
+                            tilemap.setTileProperties(i, flag);
                         }
                         if (properties.contains("sloped")) {
                             slopes[properties.get("sloped")].push(i);
