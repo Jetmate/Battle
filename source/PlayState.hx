@@ -1,5 +1,6 @@
 package;
 
+import flixel.input.keyboard.FlxKey;
 import flixel.graphics.FlxGraphic;
 import flixel.math.FlxRect;
 import flixel.graphics.frames.FlxFramesCollection;
@@ -37,7 +38,13 @@ class PlayState extends FlxState {
 
 		map = new TiledLevel(AssetPaths.level1__tmx);
 
-		player = new Player(0, 0);
+		player = new Player(0, 0, {
+			right: FlxKey.RIGHT,
+			left: FlxKey.LEFT,
+			up: FlxKey.UP,
+			down: FlxKey.DOWN,
+			jump: FlxKey.Z
+		}, map);
 
 		FlxG.camera.focusOn(new FlxPoint(map.fullWidth / 2, map.fullHeight / 2));
 		FlxG.camera.zoom = 5;
@@ -81,9 +88,9 @@ class PlayState extends FlxState {
 		var spawn = FlxG.random.getObject(spawns);
 		player.setPosition(spawn.x, spawn.y - player.height);
 
-		// add(map.backgroundMap);
-		// add(player);
-		// add(map.foregroundMap);
+		add(map.backgroundMap);
+		add(player);
+		add(map.foregroundMap);
 
 	}
 

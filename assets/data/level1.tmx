@@ -231,12 +231,6 @@
   <object id="10" type="spawn" x="70" y="145">
    <point/>
   </object>
-  <object id="17" gid="110" x="57.5" y="55" width="5" height="5"/>
-  <object id="18" gid="110" x="41" y="44.5" width="5" height="5"/>
-  <object id="19" gid="110" x="74.25" y="77.75" width="5" height="5"/>
-  <object id="20" gid="110" x="64.4545" y="64.1818" width="5" height="5"/>
-  <object id="21" gid="110" x="45.0909" y="52.2727" width="5" height="5"/>
-  <object id="22" gid="110" x="59.1818" y="62.6364" width="5" height="5"/>
   <object id="34" gid="88" x="155.25" y="39.25" width="5" height="5"/>
   <object id="37" type="spawn" x="95" y="25">
    <point/>

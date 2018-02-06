@@ -174,7 +174,7 @@ class TiledLevel extends TiledMap {
         }
     }
 
-    public function tileProperties(property:String, func:Int->Void) {
+    public function tilePropertiesForeach(property:String, func:Int->Void) {
         for (i in tileSet.firstGID...tileSet.numTiles + tileSet.firstGID) {
             if (tileSet.getPropertiesByGid(i) != null) {
                 if (tileSet.getPropertiesByGid(i).contains(property)) {
@@ -182,5 +182,29 @@ class TiledLevel extends TiledMap {
                 }
             }
         }
+    }
+
+    public function tileHasValueByCoords(x:Int, y:Int, property:String, value:Dynamic) {
+        return
+            backgroundMap.getTile(x, y) != null &&
+            tileHasValue(backgroundMap.getTile(x, y), property, value);
+    }
+
+    public function tileHasValue(i:Int, property:String, value:Dynamic) {
+        return
+            tileSet.getPropertiesByGid(i) != null &&
+            tileSet.getPropertiesByGid(i).get(property) == value;
+    }
+
+    public function tileHasPropertyByCoords(x:Int, y:Int, property:String) {
+        return
+            backgroundMap.getTile(x, y) != null &&
+            tileHasProperty(backgroundMap.getTile(x, y), property);
+    }
+
+    public function tileHasProperty(i:Int, property:String) {
+        return
+            tileSet.getPropertiesByGid(i) != null &&
+            tileSet.getPropertiesByGid(i).contains(property);
     }
 }
